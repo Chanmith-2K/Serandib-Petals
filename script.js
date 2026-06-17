@@ -1,53 +1,26 @@
-// Serendib Petals website interactions
-const WHATSAPP_NUMBER = "947XXXXXXXX"; // Replace with your real number, e.g. 94771234567
+const WHATSAPP_NUMBER = "947XXXXXXXX"; // Replace with your real WhatsApp number, e.g. 94771234567
 
-function makeWhatsAppLink(message) {
-  const encoded = encodeURIComponent(`Hi Serendib Petals, ${message}.`);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+function openWhatsApp(packageName) {
+  const message = packageName.includes("I want")
+    ? `Hi Serendib Petals, ${packageName}.`
+    : `Hi Serendib Petals, I would like to order ${packageName}. Please send availability, pickup/delivery details and payment information.`;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
-document.querySelectorAll("[data-whatsapp]").forEach((el) => {
-  el.addEventListener("click", (event) => {
-    event.preventDefault();
-    const packageName = el.getAttribute("data-whatsapp");
-    const message = packageName.includes("order") || packageName.includes("Inquiry")
-      ? packageName
-      : `I would like to order ${packageName}. Please send availability, pickup/delivery details and payment information`;
-    window.open(makeWhatsAppLink(message), "_blank", "noopener,noreferrer");
-  });
+document.querySelectorAll("[data-package]").forEach((button) => {
+  button.addEventListener("click", () => openWhatsApp(button.dataset.package));
 });
 
-const menuBtn = document.querySelector(".menu-btn");
-const mobileNav = document.querySelector(".mobile-nav");
-
-if (menuBtn && mobileNav) {
-  menuBtn.addEventListener("click", () => {
-    const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!expanded));
-    mobileNav.hidden = expanded;
-  });
-
-  mobileNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileNav.hidden = true;
-      menuBtn.setAttribute("aria-expanded", "false");
-    });
-  });
-}
-
-const filterButtons = document.querySelectorAll(".pill");
-const productCards = document.querySelectorAll(".product-card");
-
-filterButtons.forEach((button) => {
+document.querySelectorAll(".filter").forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    document.querySelectorAll(".filter").forEach((b) => b.classList.remove("active"));
     button.classList.add("active");
 
-    productCards.forEach((card) => {
-      const categories = card.dataset.category || "";
-      const show = filter === "all" || categories.includes(filter);
-      card.style.display = show ? "" : "none";
+    document.querySelectorAll(".package-card").forEach((card) => {
+      const category = card.dataset.category || "";
+      card.style.display = filter === "all" || category.includes(filter) ? "" : "none";
     });
   });
 });

@@ -1,316 +1,244 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Serendib Petals — Premium Rose Bouquet Collection</title>
-  <meta name="description" content="Serendib Petals creates premium rose bouquets and floral gestures for birthdays, dates, anniversaries, graduations and thoughtful moments in Sri Lanka." />
-  <meta name="theme-color" content="#8f1230" />
-  <meta property="og:title" content="Serendib Petals — Premium Flower Gestures" />
-  <meta property="og:description" content="Fresh rose bouquets, pastel blooms, gerbera arrangements and custom floral gifts." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serendib Petals — Premium Bouquet Collection</title>
+  <meta name="description" content="Premium bouquet collection by Serendib Petals. Fresh roses, mixed rose bouquets, chrysanthemum blooms and gerbera bouquets.">
+  <meta name="theme-color" content="#9b1235">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="noise"></div>
-
-  <header class="site-header" id="top">
-    <div class="container nav-shell">
-      <a class="brand" href="#top" aria-label="Serendib Petals home">
-        <span class="brand-mark">
-          <svg viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M34 58c-3-13-1-23 6-31 5-6 13-10 20-11-1 11-7 19-17 23 2-7 1-12-2-16-11 10-13 21-7 35Z"/>
-            <path d="M29 58c-1-12-6-20-16-24C7 31 3 26 2 19c10 0 18 4 23 12-7-2-13-1-18 3 10 4 17 12 22 24Z"/>
-            <path d="M30 38C20 25 18 13 26 3c8 5 12 12 12 21-3-5-7-8-12-10-2 7 0 15 4 24Z"/>
-          </svg>
-        </span>
-        <span>
-          <strong>Serendib Petals</strong>
-          <small>Rose Bouquet Collection</small>
-        </span>
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-icon">✦</span>
+        <span><b>Serendib Petals</b><small>Premium bouquet collection</small></span>
       </a>
-
-      <nav class="desktop-nav" aria-label="Main navigation">
+      <nav>
         <a href="#collection">Collection</a>
         <a href="#standard">Our Standard</a>
         <a href="#about">About</a>
-        <a href="#contact">Order</a>
+        <a href="#order">Order</a>
       </nav>
-
-      <a class="nav-cta" data-whatsapp="General Inquiry" href="#">Order Now</a>
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
-    </div>
-
-    <div class="mobile-nav" hidden>
-      <a href="#collection">Collection</a>
-      <a href="#standard">Our Standard</a>
-      <a href="#about">About</a>
-      <a href="#contact">Order</a>
+      <button class="nav-order" data-package="General bouquet inquiry">Order Now</button>
     </div>
   </header>
 
   <main>
-    <section class="hero section-pad">
+    <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Premium flower gestures • Keppetipola</p>
-          <h1>Flowers that make a moment feel remembered.</h1>
-          <p class="lead">
-            Fresh rose bouquets, soft fillers, clean wrapping and thoughtful presentation for birthdays,
-            dates, anniversaries, graduations and meaningful everyday gestures.
-          </p>
-
+          <p class="eyebrow">Fresh flowers • Premium wrapping • Keppetipola</p>
+          <h1>Floral gestures designed around the moment.</h1>
+          <p class="lead">A curated bouquet collection for birthdays, dates, anniversaries, graduations, get-well-soon visits and thoughtful everyday surprises.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#collection">Explore Collection</a>
-            <a class="btn btn-soft" data-whatsapp="I want to order a bouquet" href="#">WhatsApp Order</a>
+            <a class="btn primary" href="#collection">View Collection</a>
+            <button class="btn secondary" data-package="I want to customize a bouquet">Customize Bouquet</button>
           </div>
-
-          <div class="trust-row" aria-label="Brand highlights">
+          <div class="trust">
             <span>Freshness checked</span>
-            <span>Premium wrapping</span>
-            <span>Custom card option</span>
+            <span>Brand card included</span>
+            <span>WhatsApp order flow</span>
           </div>
         </div>
-
-        <div class="hero-visual" aria-label="Luxury bouquet visual">
-          <div class="bouquet-stage">
-            <div class="ribbon-card">
-              <span>Signature</span>
-              <strong>The Classic Ten</strong>
-            </div>
-            <div class="bouquet bouquet-large" aria-hidden="true">
-              <span class="baby b1"></span><span class="baby b2"></span><span class="baby b3"></span>
-              <span class="rose r1 red"></span><span class="rose r2 red"></span><span class="rose r3 red"></span>
-              <span class="rose r4 red"></span><span class="rose r5 red"></span><span class="rose r6 red"></span>
-              <span class="rose r7 red"></span><span class="rose r8 red"></span><span class="rose r9 red"></span>
-              <span class="rose r10 red"></span>
-              <span class="wrap"></span><span class="wrap wrap-two"></span><span class="tie"></span>
-              <span class="logo-dot">SP</span>
-            </div>
+        <div class="hero-card">
+          <div class="hero-bouquet">
+            <i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i>
+            <b></b><em></em>
+          </div>
+          <div class="hero-label">
+            <span>Signature Package</span>
+            <strong>The Classic Ten</strong>
+            <small>10 red roses + baby’s breath</small>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="collection" class="section-pad collection-section">
+    <section class="collection" id="collection">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Curated Collection</p>
-          <h2>Choose by feeling, not only by price.</h2>
-          <p>
-            Each package is designed with a clear mood, flower count, filler balance and presentation standard
-            so customers can select the bouquet that fits the moment.
-          </p>
+          <p class="eyebrow">Updated Package Plan</p>
+          <h2>Serendib Petals Bouquet Collection</h2>
+          <p>Professional package structure based on the latest flower count, baby’s breath quantity, greenery requirements and selling price plan.</p>
         </div>
 
-        <div class="filter-pills" role="tablist" aria-label="Bouquet filters">
-          <button class="pill active" data-filter="all">All</button>
-          <button class="pill" data-filter="rose">Roses</button>
-          <button class="pill" data-filter="pastel">Pastel</button>
-          <button class="pill" data-filter="bright">Bright</button>
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="rose">Rose</button>
+          <button class="filter" data-filter="mixed">Mixed</button>
+          <button class="filter" data-filter="pastel">Pastel</button>
+          <button class="filter" data-filter="gerbera">Gerbera</button>
         </div>
 
-        <div class="product-grid" id="productGrid">
-          <article class="product-card" data-category="rose" data-package="The Classic Ten" data-price="3500">
-            <div class="product-art classic">
-              <div class="mini-bouquet roses-red">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Best starter</span>
+        <div class="package-grid">
+          
+      <article class="package-card" data-category="rose">
+        <div class="bouquet-art">
+          <span class="package-badge">Starter Rose Gesture</span>
+          <div class="mini-bouquet"><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Classic Ten</h3>
+              <p>A clean red rose bouquet for simple romantic gestures, birthdays, appreciation gifts and thoughtful surprises.</p>
             </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Classic Ten</h3>
-                <strong>Rs.3,500</strong>
-              </div>
-              <p>A clean, elegant rose bouquet for dates, birthdays, appreciation gifts and simple romantic gestures.</p>
-              <ul>
-                <li>10 fresh roses</li>
-                <li>Baby’s Breath — 50g</li>
-                <li>Average stem length: 40cm–50cm</li>
-                <li>Premium kraft wrap + raffia finish</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Classic Ten">Order This Bouquet</button>
+            <strong>Rs.3,500</strong>
+          </div>
+          <div class="best-for">First dates • Birthdays • Thank-you gifts</div>
+          <ul><li>Red Roses — 10 stems</li><li>Baby’s Breath — confirm 50g / 500g</li><li>Greenery leaves for natural balance</li><li>Average rose stem length — 40cm–50cm</li><li>Premium kraft wrapping</li><li>Natural raffia ribbon finish</li></ul>
+          <button class="order-btn" data-package="The Classic Ten">Order via WhatsApp</button>
+        </div>
+      </article>
+    
+      <article class="package-card" data-category="rose">
+        <div class="bouquet-art">
+          <span class="package-badge">Full Red Rose Bouquet</span>
+          <div class="mini-bouquet"><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><i class="red"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Signature Twenty</h3>
+              <p>A fuller red rose bouquet with strong romantic presence for meaningful occasions and premium gifting moments.</p>
             </div>
-          </article>
-
-          <article class="product-card" data-category="rose" data-package="The Grace Fifteen" data-price="5000">
-            <div class="product-art grace">
-              <div class="mini-bouquet roses-rich">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Fuller gift</span>
+            <strong>Rs.5,500</strong>
+          </div>
+          <div class="best-for">Anniversaries • Graduations • Romantic surprises</div>
+          <ul><li>Red Roses — 20 stems</li><li>Baby’s Breath — 100g</li><li>Greenery leaves for volume and contrast</li><li>Average rose stem length — 40cm–50cm</li><li>Premium kraft wrapping</li><li>Logo sticker / bouquet card</li></ul>
+          <button class="order-btn" data-package="The Signature Twenty">Order via WhatsApp</button>
+        </div>
+      </article>
+    
+      <article class="package-card" data-category="rose mixed">
+        <div class="bouquet-art">
+          <span class="package-badge">Premium Mixed Roses</span>
+          <div class="mini-bouquet"><i class="pink"></i><i class="yellow"></i><i class="white"></i><i class="orange"></i><i class="purple"></i><i class="pink"></i><i class="yellow"></i><i class="white"></i><i class="orange"></i><i class="purple"></i><i class="pink"></i><i class="yellow"></i><i class="white"></i><i class="orange"></i><i class="purple"></i><i class="pink"></i><i class="yellow"></i><i class="white"></i><i class="orange"></i><i class="purple"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Royal Mixed Rose Bouquet</h3>
+              <p>A colourful premium rose bouquet designed with five rose colours to create a rich, expressive and celebratory look.</p>
             </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Grace Fifteen</h3>
-                <strong>Rs.5,000</strong>
-              </div>
-              <p>A fuller rose arrangement with more presence for graduations, anniversaries and meaningful surprises.</p>
-              <ul>
-                <li>15 fresh roses</li>
-                <li>Baby’s Breath — 75g</li>
-                <li>Average stem length: 40cm–50cm</li>
-                <li>Logo sticker / bouquet card</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Grace Fifteen">Order This Bouquet</button>
+            <strong>Rs.6,500</strong>
+          </div>
+          <div class="best-for">Birthdays • Congratulations • Celebrations</div>
+          <ul><li>Pink Roses — 4 stems</li><li>Yellow Roses — 4 stems</li><li>White Roses — 4 stems</li><li>Orange Roses — 4 stems</li><li>Purple Roses — 4 stems</li><li>Baby’s Breath — 100g</li></ul>
+          <button class="order-btn" data-package="The Royal Mixed Rose Bouquet">Order via WhatsApp</button>
+        </div>
+      </article>
+    
+      <article class="package-card" data-category="pastel">
+        <div class="bouquet-art">
+          <span class="package-badge">Soft Pastel Floral</span>
+          <div class="mini-bouquet"><i class="chry-purple"></i><i class="chry-white"></i><i class="pink"></i><i class="soft-yellow"></i><i class="chry-purple"></i><i class="chry-white"></i><i class="pink"></i><i class="soft-yellow"></i><i class="chry-purple"></i><i class="chry-white"></i><i class="pink"></i><i class="soft-yellow"></i><i class="chry-purple"></i><i class="chry-white"></i><i class="pink"></i><i class="soft-yellow"></i><i class="chry-purple"></i><i class="chry-white"></i><i class="pink"></i><i class="soft-yellow"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Soft Garden Bloom</h3>
+              <p>A graceful bouquet with chrysanthemums and pastel roses for a gentle, elegant and feminine presentation.</p>
             </div>
-          </article>
-
-          <article class="product-card featured" data-category="rose" data-package="The Signature Twenty" data-price="6000">
-            <div class="product-art signature">
-              <div class="mini-bouquet roses-premium">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Premium</span>
+            <strong>Rs.5,000</strong>
+          </div>
+          <div class="best-for">Appreciation • Mother’s Day • Elegant surprises</div>
+          <ul><li>Purple Chrysanthemums — 5 stems</li><li>White Chrysanthemums — 5 stems</li><li>Light Pink Roses — 5 stems</li><li>Light Yellow Roses — 5 stems</li><li>Baby’s Breath — 100g</li><li>Premium kraft wrapping</li></ul>
+          <button class="order-btn" data-package="The Soft Garden Bloom">Order via WhatsApp</button>
+        </div>
+      </article>
+    
+      <article class="package-card" data-category="gerbera">
+        <div class="bouquet-art">
+          <span class="package-badge">Soft Everyday Gift</span>
+          <div class="mini-bouquet"><i class="gerbera-pink"></i><i class="gerbera-pink"></i><i class="gerbera-pink"></i><i class="gerbera-pink"></i><i class="gerbera-pink"></i><i class="alstro-pink"></i><i class="alstro-pink"></i><i class="alstro-pink"></i><i class="alstro-pink"></i><i class="alstro-pink"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Pink Gerbera Grace</h3>
+              <p>A simple and cheerful gerbera bouquet with soft pink tones and baby’s breath for warm everyday gifting.</p>
             </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Signature Twenty</h3>
-                <strong>Rs.6,000</strong>
-              </div>
-              <p>A rich statement bouquet designed for important moments, premium birthdays and romantic gestures.</p>
-              <ul>
-                <li>20 fresh roses</li>
-                <li>Baby’s Breath — 100g</li>
-                <li>Full premium presentation</li>
-                <li>Best for proposals and special occasions</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Signature Twenty">Order This Bouquet</button>
+            <strong>Rs.3,000</strong>
+          </div>
+          <div class="best-for">Get-well-soon • Birthdays • Friendly surprises</div>
+          <ul><li>Pink Gerbera — 5 stems</li><li>Alstroemeria — 10 stems</li><li>Baby’s Breath — 100g</li><li>Premium kraft wrapping</li><li>Natural raffia ribbon finish</li><li>Logo sticker / bouquet card</li></ul>
+          <button class="order-btn" data-package="The Pink Gerbera Grace">Order via WhatsApp</button>
+        </div>
+      </article>
+    
+      <article class="package-card" data-category="gerbera bright">
+        <div class="bouquet-art">
+          <span class="package-badge">Bright Celebration</span>
+          <div class="mini-bouquet"><i class="gerbera-pink"></i><i class="gerbera-purple"></i><i class="gerbera-white"></i><i class="gerbera-orange"></i><i class="gerbera-yellow"></i><i class="gerbera-pink"></i><i class="gerbera-purple"></i><i class="gerbera-white"></i><i class="gerbera-orange"></i><i class="gerbera-yellow"></i><i class="gerbera-pink"></i><i class="gerbera-purple"></i><i class="gerbera-white"></i><i class="gerbera-orange"></i><i class="gerbera-yellow"></i><i class="gerbera-pink"></i><i class="gerbera-purple"></i><i class="gerbera-white"></i><i class="gerbera-orange"></i><i class="gerbera-yellow"></i><b></b><em></em></div>
+        </div>
+        <div class="package-content">
+          <div class="package-heading">
+            <div>
+              <h3>The Colour Gerbera Joy</h3>
+              <p>A bright and joyful gerbera bouquet designed with multiple colours for cheerful and energetic gifting moments.</p>
             </div>
-          </article>
-
-          <article class="product-card" data-category="rose bright" data-package="The Mixed Rose Edit" data-price="4500">
-            <div class="product-art mixed">
-              <div class="mini-bouquet roses-mixed">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Colour mood</span>
-            </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Mixed Rose Edit</h3>
-                <strong>Rs.4,500+</strong>
-              </div>
-              <p>A colourful rose bouquet for cheerful celebrations, friendship gifts and expressive moments.</p>
-              <ul>
-                <li>12–15 mixed colour roses</li>
-                <li>Baby’s Breath — 75g</li>
-                <li>Red, pink, white, yellow or orange mix</li>
-                <li>Occasion-based colour balance</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Mixed Rose Edit">Order This Bouquet</button>
-            </div>
-          </article>
-
-          <article class="product-card" data-category="pastel" data-package="The Pastel Bloom" data-price="5500">
-            <div class="product-art pastel">
-              <div class="mini-bouquet pastel-bloom">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Soft elegance</span>
-            </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Pastel Bloom</h3>
-                <strong>Rs.5,500+</strong>
-              </div>
-              <p>A feminine pastel arrangement with soft pink tones, white blooms and delicate baby’s breath.</p>
-              <ul>
-                <li>Pink / pastel flower theme</li>
-                <li>White or pastel supporting blooms</li>
-                <li>Soft floral arrangement style</li>
-                <li>Best for elegant surprises</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Pastel Bloom">Order This Bouquet</button>
-            </div>
-          </article>
-
-          <article class="product-card" data-category="bright" data-package="The Gerbera Joy Bouquet" data-price="3500">
-            <div class="product-art gerbera">
-              <div class="mini-bouquet gerbera-bloom">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <span class="card-badge">Bright gesture</span>
-            </div>
-            <div class="product-content">
-              <div class="product-top">
-                <h3>The Gerbera Joy Bouquet</h3>
-                <strong>Rs.3,500+</strong>
-              </div>
-              <p>A bright bouquet made with colourful gerbera flowers and baby’s breath for joyful gifting moments.</p>
-              <ul>
-                <li>Colourful gerbera flowers</li>
-                <li>Baby’s Breath filler</li>
-                <li>Premium kraft wrapping</li>
-                <li>Best for get-well-soon and birthdays</li>
-              </ul>
-              <button class="order-btn" data-whatsapp="The Gerbera Joy Bouquet">Order This Bouquet</button>
-            </div>
-          </article>
+            <strong>Rs.4,500</strong>
+          </div>
+          <div class="best-for">Birthdays • Celebrations • Congratulations</div>
+          <ul><li>Pink Gerbera — 4 stems</li><li>Purple Gerbera — 4 stems</li><li>White Gerbera — 4 stems</li><li>Orange Gerbera — 4 stems</li><li>Yellow Gerbera — 4 stems</li><li>Baby’s Breath — 100g</li></ul>
+          <button class="order-btn" data-package="The Colour Gerbera Joy">Order via WhatsApp</button>
+        </div>
+      </article>
+    
         </div>
       </div>
     </section>
 
-    <section id="standard" class="section-pad standard-section">
+    <section class="standard" id="standard">
       <div class="container standard-grid">
         <div>
           <p class="eyebrow">The Serendib Standard</p>
-          <h2>Premium is a system, not only a price.</h2>
-          <p class="standard-lead">
-            Every bouquet is checked for freshness, colour balance, wrapping discipline and handover presentation.
-          </p>
+          <h2>Premium is not only the flower count. It is the finishing.</h2>
+          <p>Every bouquet should feel fresh, balanced and ready-to-gift. The standard is built around flower selection, filler volume, wrapping discipline and final handover presentation.</p>
         </div>
         <div class="standard-list">
-          <div><strong>01</strong><span>Fresh flower selection based on petal condition and stem strength.</span></div>
-          <div><strong>02</strong><span>Baby’s breath used to create softness, volume and refined spacing.</span></div>
-          <div><strong>03</strong><span>Clean kraft wrapping, natural raffia finish and brand card presentation.</span></div>
-          <div><strong>04</strong><span>Final bouquet check before customer pickup or delivery.</span></div>
+          <div><b>01</b><span>Fresh flower selection based on petal condition, colour clarity and stem strength.</span></div>
+          <div><b>02</b><span>Baby’s breath used to create softness, volume and a refined floral texture.</span></div>
+          <div><b>03</b><span>Greenery leaves added only where they improve shape, balance and natural contrast.</span></div>
+          <div><b>04</b><span>Premium kraft wrapping, raffia ribbon finish and Serendib Petals card/sticker included.</span></div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section-pad about-section">
-      <div class="container about-card">
+    <section class="about" id="about">
+      <div class="container about-box">
         <div>
-          <p class="eyebrow">About Us</p>
+          <p class="eyebrow">About Serendib Petals</p>
           <h2>We design flowers around feelings.</h2>
         </div>
-        <p>
-          Serendib Petals is a premium flower gifting brand created for people who want their bouquet to feel
-          thoughtful, fresh and beautifully presented. Our goal is not to simply sell flowers, but to help customers
-          choose the right gesture for the right moment.
-        </p>
+        <p>Serendib Petals is a premium flower gifting brand focused on thoughtful presentation. We create bouquets for people who want the gift to feel fresh, intentional and beautifully prepared — not just wrapped.</p>
       </div>
     </section>
 
-    <section id="contact" class="section-pad contact-section">
-      <div class="container contact-card">
+    <section class="order" id="order">
+      <div class="container order-box">
         <p class="eyebrow">Reserve Your Bouquet</p>
         <h2>Order through WhatsApp</h2>
-        <p>
-          Send the bouquet name, date, pickup or delivery preference, and card message. We will confirm availability,
-          final price and preparation time.
-        </p>
-        <a class="btn btn-primary" data-whatsapp="I want to place a bouquet order" href="#">Start WhatsApp Order</a>
-        <small>Replace the WhatsApp number in <code>script.js</code> before publishing.</small>
+        <p>Send the bouquet package name, required date, pickup or delivery preference and card message. We will confirm availability and final preparation time.</p>
+        <button class="btn primary" data-package="I want to place a bouquet order">Start WhatsApp Order</button>
+        <small>Open <code>script.js</code> and replace the WhatsApp number before publishing.</small>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Serendib Petals</strong>
-        <p>Fresh flowers. Thoughtful gestures. Premium presentation.</p>
-      </div>
-      <a href="#top">Back to top ↑</a>
+  <footer>
+    <div class="container footer-box">
+      <div><b>Serendib Petals</b><p>Fresh flowers. Thoughtful gestures. Premium presentation.</p></div>
+      <a href="#">Back to top ↑</a>
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
