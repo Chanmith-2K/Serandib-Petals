@@ -2,31 +2,30 @@
 (function(){
   if(window.__SP_UI_FIXES_V13__)return;window.__SP_UI_FIXES_V13__=true;
 
+  function setTextIfChanged(el,value){if(el&&el.textContent!==value)el.textContent=value}
+
   function apply(){
     const connected=!!window.SerendibCloud?.connected;
     const member=window.SerendibCloud?.member;
 
-    document.querySelectorAll('.brand-mark img,.sp-mobile-brand img').forEach(img=>img.style.display='none');
+    document.querySelectorAll('.brand-mark img,.sp-mobile-brand img').forEach(img=>{if(img.style.display!=='none')img.style.display='none'});
 
     const mark=document.querySelector('.brand-mark');
     if(mark){
-      mark.classList.add('sp-logo-mark');
-      if(!mark.textContent.trim() || mark.querySelector('img')){
-        mark.querySelectorAll('img').forEach(x=>x.remove());
-      }
+      if(!mark.classList.contains('sp-logo-mark'))mark.classList.add('sp-logo-mark');
+      mark.querySelectorAll('img').forEach(x=>x.remove());
     }
 
-    const version=document.querySelector('.sidebar-bottom small');
-    if(version)version.textContent='Serendib Orders v13';
+    setTextIfChanged(document.querySelector('.sidebar-bottom small'),'Serendib Orders v13');
 
     const label=document.getElementById('todayLabel');
-    if(label && connected){
+    if(label&&connected&&label.textContent.includes('Live local data')){
       label.textContent=label.textContent.replace('Live local data','Live cloud data');
     }
 
     const status=document.querySelector('.status-dot span');
-    if(status && connected){
-      status.textContent='Cloud connected'+(member?.role?' • '+member.role:'');
+    if(status&&connected){
+      setTextIfChanged(status,'Cloud connected'+(member?.role?' • '+member.role:''));
     }
   }
 
