@@ -25,10 +25,17 @@
   </div>
 
   <div id="analyticsPage" class="hidden">
-    <div class="top"><div class="header"><div><h1>Reports</h1><div class="subtitle">Export orders and business summary</div></div></div></div>
+    <div class="top"><div class="header"><div><h1>Reports</h1><div class="subtitle">Monthly reports, exports & backup</div></div></div></div>
     <div class="analytics">
+      <div class="detail-card">
+        <div class="detail-label">REPORT PERIOD</div>
+        <div class="field" style="margin:8px 0 0"><label>Choose month</label><input type="month" id="reportMonth" onchange="renderAnalytics()"></div>
+        <button class="actionbtn secondary" style="width:100%;margin-top:8px" onclick="showAllTimeReport()">Show All Time</button>
+        <div class="detail-value" id="periodLabel" style="margin-top:10px">All Time</div>
+      </div>
+
       <div class="statgrid">
-        <div class="bigstat"><b id="revStat">Rs. 0</b><span>Total order value</span></div>
+        <div class="bigstat"><b id="revStat">Rs. 0</b><span>Order value</span></div>
         <div class="bigstat"><b id="paidStat">0</b><span>Paid orders</span></div>
         <div class="bigstat"><b id="pendingStat">0</b><span>Open orders</span></div>
         <div class="bigstat"><b id="deliveryStat">0</b><span>Delivered</span></div>
@@ -46,6 +53,13 @@
         <p id="reportDate"></p>
         <p id="reportSummary"></p>
         <div id="reportTable"></div>
+      </div>
+
+      <div class="reportbox">
+        <h3>Data Safety</h3>
+        <p>Backup your data before resetting or changing phones.</p>
+        <div class="field" style="margin-top:10px"><label>Restore a JSON backup</label><input type="file" id="restoreFile" accept="application/json,.json" onchange="restoreBackup(event)"></div>
+        <button class="danger" onclick="resetAllData()">Reset All Orders</button>
       </div>
     </div>
   </div>
