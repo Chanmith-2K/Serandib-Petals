@@ -20,10 +20,7 @@
 <body>
 <div class="desktop-app">
   <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-mark">SP</div>
-      <div><strong>Serendib Petals</strong><span>Operations Command Center</span></div>
-    </div>
+    <div class="brand"><div class="brand-mark">SP</div><div><strong>Serendib Petals</strong><span>Operations Command Center</span></div></div>
     <nav class="nav">
       <button class="nav-item active" data-view="dashboard" onclick="switchView('dashboard',this)"><span>◫</span> Dashboard</button>
       <button class="nav-item" data-view="orders" onclick="switchView('orders',this)"><span>□</span> Orders</button>
@@ -31,27 +28,15 @@
       <button class="nav-item" data-view="analytics" onclick="switchView('analytics',this)"><span>⌁</span> Reports</button>
       <button class="nav-item" data-view="team" onclick="switchView('team',this)"><span>◎</span> Team</button>
     </nav>
-    <div class="sidebar-bottom">
-      <div class="status-dot"><i></i><span>Connecting to cloud…</span></div>
-      <small>Serendib Orders v15 Stable</small>
-    </div>
+    <div class="sidebar-bottom"><div class="status-dot"><i></i><span>Connecting to cloud…</span></div><small>Serendib Orders v15 Stable</small></div>
   </aside>
 
   <main class="workspace">
     <section id="dashboardView" class="dashboard-view">
       <header class="desktop-header">
-        <div>
-          <p class="eyebrow">OPERATIONS OVERVIEW</p>
-          <h1>Good to see you.</h1>
-          <p class="header-sub" id="todayLabel">Loading live business data…</p>
-        </div>
-        <div class="header-actions">
-          <button class="secondary-btn" onclick="refreshDashboard()">Refresh</button>
-          <button class="secondary-btn" onclick="toggleFullscreen()" id="fullscreenBtn">Full Screen</button>
-          <button class="primary-btn" onclick="openNewFromShell()">+ New Order</button>
-        </div>
+        <div><p class="eyebrow">OPERATIONS OVERVIEW</p><h1>Good to see you.</h1><p class="header-sub" id="todayLabel">Loading live business data…</p></div>
+        <div class="header-actions"><button class="secondary-btn" onclick="refreshDashboard()">Refresh</button><button class="secondary-btn" onclick="toggleFullscreen()" id="fullscreenBtn">Full Screen</button><button class="primary-btn" onclick="openNewFromShell()">+ New Order</button></div>
       </header>
-
       <div class="dashboard-body">
         <div class="kpi-grid">
           <article class="kpi-card hero-kpi"><div class="kpi-top"><span>Sales this month</span><em>Revenue</em></div><strong id="kpiSales">Rs. 0</strong><small id="kpiSalesSub">0 orders this month</small></article>
@@ -61,12 +46,8 @@
           <article class="kpi-card"><div class="kpi-top"><span>Today</span><em>Delivery</em></div><strong id="kpiToday">0</strong><small id="kpiTodaySub">deliveries scheduled</small></article>
           <article class="kpi-card"><div class="kpi-top"><span>Open orders</span><em>Workload</em></div><strong id="kpiOpen">0</strong><small id="kpiOpenSub">0 urgent / same-day</small></article>
         </div>
-
         <div class="dashboard-grid">
-          <article class="panel chart-panel">
-            <div class="panel-head"><div><span class="panel-kicker">PERFORMANCE</span><h2>Sales & profit trend</h2></div><div class="range-switch"><button class="range active" onclick="setChartRange(7,this)">7D</button><button class="range" onclick="setChartRange(30,this)">30D</button><button class="range" onclick="setChartRange(90,this)">90D</button></div></div>
-            <div class="chart-legend"><span><i class="sales-dot"></i>Sales</span><span><i class="profit-dot"></i>Gross profit</span></div><div id="trendChart" class="trend-chart"></div>
-          </article>
+          <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">PERFORMANCE</span><h2>Sales & profit trend</h2></div><div class="range-switch"><button class="range active" onclick="setChartRange(7,this)">7D</button><button class="range" onclick="setChartRange(30,this)">30D</button><button class="range" onclick="setChartRange(90,this)">90D</button></div></div><div class="chart-legend"><span><i class="sales-dot"></i>Sales</span><span><i class="profit-dot"></i>Gross profit</span></div><div id="trendChart" class="trend-chart"></div></article>
           <article class="panel attention-panel"><div class="panel-head"><div><span class="panel-kicker">ATTENTION</span><h2>Needs action</h2></div></div><div id="attentionList" class="attention-list"></div></article>
           <article class="panel"><div class="panel-head"><div><span class="panel-kicker">PIPELINE</span><h2>Order status</h2></div><button class="text-btn" onclick="switchView('orders',document.querySelector('[data-view=orders]'))">View orders</button></div><div id="statusBreakdown" class="status-breakdown"></div></article>
           <article class="panel"><div class="panel-head"><div><span class="panel-kicker">MARKETING</span><h2>Lead sources</h2></div><span class="panel-note">This month</span></div><div id="leadBreakdown" class="lead-breakdown"></div></article>
@@ -74,14 +55,11 @@
         </div>
       </div>
     </section>
-
-    <section id="operationsView" class="operations-view hidden">
-      <iframe id="operationsFrame" title="Serendib Orders" src="v7.html?v=15"></iframe>
-    </section>
+    <section id="operationsView" class="operations-view hidden"><iframe id="operationsFrame" title="Serendib Orders" src="v7.html?v=15"></iframe></section>
   </main>
 </div>
-
 <script src="v9.js?v=9"></script>
+<script src="nav-stability-v15.js?v=15"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud-sync.js?v=10"></script>
 <script src="serendib-enhancements.js?v=11"></script>
