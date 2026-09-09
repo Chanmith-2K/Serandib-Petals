@@ -1,9 +1,25 @@
-/* Loads the existing Serendib UI inside the cloud-authenticated shell and injects cloud sync into same-origin app frames. */
+/* Loads the existing Serendib UI inside the cloud-authenticated shell and injects cloud sync + v11 enhancements into same-origin app frames. */
 (function(){
   const rootFrame = document.getElementById('cloudAppFrame');
   const desktop = window.matchMedia && window.matchMedia('(min-width:900px)').matches;
-  const baseTarget = desktop ? 'v9.html?v=10' : 'v7.html?v=10';
+  const baseTarget = desktop ? 'v9.html?v=11' : 'v7.html?v=11';
   let authReloadDone = false;
+
+  function addEnhancements(doc){
+    if(!doc.getElementById('serendib-enhancements-css')){
+      const link = doc.createElement('link');
+      link.id = 'serendib-enhancements-css';
+      link.rel = 'stylesheet';
+      link.href = 'serendib-enhancements.css?v=11';
+      doc.head.appendChild(link);
+    }
+    if(!doc.getElementById('serendib-enhancements-js')){
+      const script = doc.createElement('script');
+      script.id = 'serendib-enhancements-js';
+      script.src = 'serendib-enhancements.js?v=11';
+      doc.body.appendChild(script);
+    }
+  }
 
   function addCloudAssets(frame){
     try{
@@ -17,6 +33,8 @@
         link.href = 'cloud.css?v=10';
         doc.head.appendChild(link);
       }
+
+      addEnhancements(doc);
 
       const loadCloud = () => {
         if(doc.getElementById('serendib-cloud-sync')) return;
