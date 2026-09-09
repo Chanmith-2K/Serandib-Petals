@@ -1,5 +1,5 @@
-const CACHE="serendib-orders-v10";
-const ASSETS=["./","./index.html","./cloud.html?v=10","./cloud.css?v=10","./cloud-sync.js?v=10","./cloud-launcher.js?v=10","./v7.html?v=10","./v9.html?v=10","./manifest.json","./icon.svg","./styles.css?v=6","./v7.css?v=7","./v9.css?v=9","./app.js?v=6","./v7.js?v=7","./v9.js?v=9"];
+const CACHE="serendib-orders-v11";
+const ASSETS=["./","./index.html","./cloud.html?v=11","./cloud.css?v=10","./cloud-sync.js?v=10","./cloud-launcher.js?v=11","./serendib-enhancements.css?v=11","./serendib-enhancements.js?v=11","./serendib-logo.svg?v=11","./v7.html?v=11","./v9.html?v=11","./manifest.json","./icon.svg","./styles.css?v=6","./v7.css?v=7","./v9.css?v=9","./app.js?v=6","./v7.js?v=7","./v9.js?v=9"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(fetch(e.request,{cache:"no-store"}).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{});return r}).catch(()=>caches.match(e.request)))})
