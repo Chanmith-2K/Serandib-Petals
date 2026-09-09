@@ -1,7 +1,7 @@
 {
   "name": "Serendib Petals Order Manager",
   "short_name": "Serendib Orders",
-  "start_url": "./cloud.html?v=13",
+  "start_url": "./cloud.html?v=14",
   "scope": "./",
   "display": "standalone",
   "background_color": "#111612",
