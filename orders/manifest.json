@@ -1,0 +1,11 @@
+{
+  "name": "Serendib Petals Order Manager",
+  "short_name": "Serendib Orders",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f5",
+  "theme_color": "#7b1e2b",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
