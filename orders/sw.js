@@ -6,6 +6,7 @@ const ASSETS=[
   "./v7.html?v=15",
   "./v9.css?v=9",
   "./v9.js?v=9",
+  "./nav-stability-v15.js?v=15",
   "./styles.css?v=6",
   "./v7.css?v=7",
   "./app.js?v=6",
