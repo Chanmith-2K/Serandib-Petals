@@ -1,4 +1,4 @@
-const CACHE="serendib-orders-v15-stable";
+const CACHE="serendib-orders-v15-stable-b";
 const ASSETS=[
   "./",
   "./index.html",
@@ -17,7 +17,7 @@ const ASSETS=[
   "./serendib-enhancements.js?v=11",
   "./expenses-v12.css?v=12",
   "./expenses-v12.js?v=12",
-  "./ui-fixes-v13.css?v=13",
+  "./ui-fixes-v13.css?v=15b",
   "./ui-fixes-v15.js?v=15",
   "./frame-cloud-v15.js?v=15",
   "./manifest.json?v=15",
