@@ -1,7 +1,7 @@
-/* Serendib Petals v13 — remove uploaded logo image and polish cloud UI */
+/* Serendib Petals v15 — remove uploaded logo image and polish cloud UI */
 .brand-mark.sp-logo-mark{position:relative;display:grid!important;place-items:center!important;overflow:hidden;background:linear-gradient(145deg,#8f2b3e,#641521)!important;color:#fff!important;font-weight:900!important;letter-spacing:.03em!important}
 .brand-mark.sp-logo-mark img{display:none!important}
-.brand-mark.sp-logo-mark::before{content:"SP";display:block;font-size:14px;line-height:1;color:#fff}
+.brand-mark.sp-logo-mark::before{content:none!important;display:none!important}
 .sp-mobile-brand img{display:none!important}
 .sp-mobile-brand{gap:0!important}
 .sp-mobile-brand>div{display:block!important}
