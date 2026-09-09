@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="icon.svg">
   <link rel="manifest" href="manifest.json">
   <title>Serendib Petals Orders</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 <div class="phone">
@@ -36,6 +36,8 @@
 
       <div class="statgrid">
         <div class="bigstat"><b id="revStat">Rs. 0</b><span>Order value</span></div>
+        <div class="bigstat"><b id="advanceStat">Rs. 0</b><span>Advance collected</span></div>
+        <div class="bigstat"><b id="dueStat">Rs. 0</b><span>Due outstanding</span></div>
         <div class="bigstat"><b id="paidStat">0</b><span>Paid orders</span></div>
         <div class="bigstat"><b id="pendingStat">0</b><span>Open orders</span></div>
         <div class="bigstat"><b id="deliveryStat">0</b><span>Delivered</span></div>
@@ -99,7 +101,9 @@
       <div class="field"><label>Delivery Address</label><textarea id="deliveryAddress"></textarea></div>
     </div>
     <div class="section"><div class="section-title">Payment & Workflow</div>
-      <div class="field"><label>Amount (LKR)</label><input type="number" id="amount"></div>
+      <div class="field"><label>Bouquet Value (LKR)</label><input type="number" min="0" id="amount" oninput="syncPaymentFields()"></div>
+      <div class="field"><label>Advance Paid (LKR)</label><input type="number" min="0" id="advanceAmount" oninput="syncPaymentFields()"></div>
+      <div class="field"><label>Due Payment (LKR)</label><input type="number" id="dueAmount" readonly></div>
       <div class="field"><label>Payment Status</label><select id="paymentStatus"></select></div>
       <div class="field"><label>Order Status</label><select id="status"></select></div>
       <div class="field"><label>Internal Notes</label><textarea id="notes"></textarea></div>
@@ -114,6 +118,6 @@
   </div>
 </div>
 
-<script src="app.js"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
