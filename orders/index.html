@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7b1e2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Serendib Orders">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <title>Serendib Petals Orders</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="phone">
+  <div id="ordersPage">
+    <div class="top">
+      <div class="header"><div><h1>Serendib Orders</h1><div class="subtitle">Flower orders, delivery & payment tracking</div></div><button class="plus" onclick="openNew()">+</button></div>
+      <div class="summary"><div class="sum"><b id="openCount">0</b><span>Open</span></div><div class="sum"><b id="todayCount">0</b><span>Today</span></div><div class="sum"><b id="deliveredCount">0</b><span>Delivered</span></div></div>
+      <div class="search"><input id="search" placeholder="Search customer, phone, order..." oninput="renderOrders()"></div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="list" id="orderList"></div>
+  </div>
+
+  <div id="analyticsPage" class="hidden">
+    <div class="top"><div class="header"><div><h1>Reports</h1><div class="subtitle">Export orders and business summary</div></div></div></div>
+    <div class="analytics">
+      <div class="statgrid">
+        <div class="bigstat"><b id="revStat">Rs. 0</b><span>Total order value</span></div>
+        <div class="bigstat"><b id="paidStat">0</b><span>Paid orders</span></div>
+        <div class="bigstat"><b id="pendingStat">0</b><span>Open orders</span></div>
+        <div class="bigstat"><b id="deliveryStat">0</b><span>Delivered</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="actionbtn" onclick="exportCSV()">Export CSV</button>
+        <button class="actionbtn secondary" onclick="window.print()">Print / PDF</button>
+        <button class="actionbtn secondary" onclick="backupJSON()">Backup Data</button>
+        <button class="actionbtn secondary" onclick="shareSummary()">Share Summary</button>
+      </div>
+
+      <div class="reportbox" id="printReport">
+        <h3>Serendib Petals Order Report</h3>
+        <p id="reportDate"></p>
+        <p id="reportSummary"></p>
+        <div id="reportTable"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="teamPage" class="hidden">
+    <div class="top"><div class="header"><div><h1>Team Flow</h1><div class="subtitle">Who owns what</div></div></div></div>
+    <div class="analytics">
+      <div class="detail-card"><div class="detail-label">MARKETING & CONTENT</div><div class="detail-value">Chanmith — content, ads, research, campaigns</div></div>
+      <div class="detail-card"><div class="detail-label">SALES & ORDER MANAGEMENT</div><div class="detail-value">Eluwa — customers, closing, payments, order details</div></div>
+      <div class="detail-card"><div class="detail-label">FLOWER PREP & LOGISTICS</div><div class="detail-value">Pasidu — sourcing, quality, cutting, prep, delivery</div></div>
+      <div class="detail-card"><div class="detail-label">FLORAL DESIGN & FINISHING</div><div class="detail-value">Nangi — bouquet arrangement, wrapping, finishing</div></div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tabOrders" onclick="showPage('orders')">Orders</button>
+    <button class="tab" id="tabAnalytics" onclick="showPage('analytics')">Reports</button>
+    <button class="tab" id="tabTeam" onclick="showPage('team')">Team</button>
+  </div>
+</div>
+
+<div class="modal" id="orderModal" onclick="backdropClose(event)">
+  <div class="sheet">
+    <div class="sheet-head"><button class="ghost" onclick="closeModal()">Cancel</button><h2 id="formTitle">New Order</h2><button class="ghost" onclick="saveOrder()">Save</button></div>
+    <div class="section"><div class="section-title">Order</div>
+      <div class="field"><label>Order Number</label><input id="orderNumber"></div>
+      <div class="field"><label>Customer Name</label><input id="customerName"></div>
+      <div class="field"><label>Phone</label><input id="phone"></div>
+    </div>
+    <div class="section"><div class="section-title">Bouquet</div>
+      <div class="field"><label>Bouquet Name</label><input id="bouquetName"></div>
+      <div class="field"><label>Flower / Colour Details</label><textarea id="flowerDetails"></textarea></div>
+      <div class="field"><label>Card Message</label><textarea id="cardMessage"></textarea></div>
+    </div>
+    <div class="section"><div class="section-title">Delivery</div>
+      <div class="field"><label>Date & Time</label><input type="datetime-local" id="deliveryDate"></div>
+      <div class="field"><label>Delivery Address</label><textarea id="deliveryAddress"></textarea></div>
+    </div>
+    <div class="section"><div class="section-title">Payment & Workflow</div>
+      <div class="field"><label>Amount (LKR)</label><input type="number" id="amount"></div>
+      <div class="field"><label>Payment Status</label><select id="paymentStatus"></select></div>
+      <div class="field"><label>Order Status</label><select id="status"></select></div>
+      <div class="field"><label>Internal Notes</label><textarea id="notes"></textarea></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="detailModal" onclick="backdropCloseDetail(event)">
+  <div class="sheet">
+    <div class="sheet-head"><button class="ghost" onclick="closeDetail()">Close</button><h2 id="detailTitle">Order</h2><button class="ghost" onclick="editCurrent()">Edit</button></div>
+    <div id="detailBody"></div><button class="danger" onclick="deleteCurrent()">Delete Order</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
