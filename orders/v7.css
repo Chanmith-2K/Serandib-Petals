@@ -1,0 +1,22 @@
+/* Serendib Orders v7 usability layer */
+:root{--brand:#7b1e2b;--brand-soft:#f7ecef;--green:#246247;--amber:#9a5a00;--danger:#a3263c;--shadow-sm:0 5px 18px rgba(25,35,28,.055)}
+body{background:#eef2ee}.phone{background:#f7f8f6;box-shadow:0 0 0 1px rgba(0,0,0,.03)}
+.header{padding:16px 16px 9px}.header h1{font-size:25px}.subtitle{font-size:11px;line-height:1.35}
+.plus{width:auto;height:38px;border-radius:12px;padding:0 14px;font-size:14px;font-weight:800;white-space:nowrap}
+.summary{gap:8px;padding:7px 12px 10px}.sum{border-radius:14px;padding:10px 8px;box-shadow:var(--shadow-sm)}.sum b{font-size:17px}.sum span{font-size:10px}
+.search{padding:0 12px 9px}.search input{background:#fff;padding:11px 12px}
+.chips{padding:0 12px 10px;gap:7px}.chip{padding:7px 11px;font-weight:650;border-radius:11px}.chip.active{box-shadow:0 4px 12px rgba(123,30,43,.15)}
+.list{padding:8px 12px 100px}.order{border-radius:16px;padding:13px;box-shadow:var(--shadow-sm);margin-bottom:8px}.order.urgent-order{border-left:4px solid #c56a1b}.order .customer{font-size:13px}.order .bouquet{font-size:12px}.meta{font-size:10.5px}.badge{padding:5px 7px}
+.tabs{padding:7px 8px calc(7px + env(safe-area-inset-bottom));gap:2px}.tab{min-height:44px;border-radius:11px;font-size:10.5px}.tab.active{background:var(--brand-soft)}
+.analytics{padding:12px 12px 100px}.reportbox,.detail-card,.bigstat{border-radius:15px;box-shadow:var(--shadow-sm)}.reportbox{padding:13px}.detail-card{padding:12px}.statgrid{gap:8px}.bigstat{padding:13px}.bigstat b{font-size:20px}.bigstat span{font-size:10.5px}
+.actions{gap:8px}.actionbtn{min-height:44px;border-radius:12px}.actionbtn.primary-wide{grid-column:1/-1;font-size:14px}.actionbtn.secondary{background:#fff}.full{width:100%}
+.report-controls{display:grid;gap:10px}.preset-row{display:flex;gap:7px;overflow:auto;padding-bottom:2px}.preset{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:700;color:var(--text)}.preset.active{background:var(--brand-soft);border-color:#d9b6bf;color:var(--brand)}
+.range-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.range-grid .field{margin:0}.report-hint{font-size:11px;color:var(--muted);line-height:1.45;margin-top:7px}
+.source-chips{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}.source-chips span{font-size:10px;padding:6px 8px;border-radius:999px;background:#f3f5f3;color:#566057}.source-chips b{color:var(--text)}
+.report-preview-list{margin-top:8px}.report-preview-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.report-preview-row:last-child{border-bottom:0}.report-preview-row b{font-size:11px}.report-preview-row small{display:block;color:var(--muted);font-size:9.5px;margin-top:2px}.report-preview-row .right{text-align:right;white-space:nowrap}.empty.compact{padding:24px 10px}
+.sheet{padding:0 12px 30px;border-radius:22px 22px 0 0}.sheet-head{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);backdrop-filter:blur(18px);margin:0 -12px 7px;padding:13px 12px 11px;border-bottom:1px solid var(--line)}.sheet-head h2{font-size:17px}.ghost{min-height:38px;padding:0 4px}
+.section{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm)}.section-title{font-size:10.5px;margin-bottom:10px;color:#5d665f}.field{margin-bottom:9px}.field:last-child{margin-bottom:0}.field label{font-size:10.5px;font-weight:650;color:#697169}.grid2{gap:8px}input,textarea,select{border-radius:11px;padding:11px 11px;font-size:14px;background:#fbfcfb}input[readonly]{background:#f1f3f1;color:#4d554f;font-weight:700}textarea{min-height:66px}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.payment-row{padding:9px 0}.payment-row small{font-size:9.5px}.danger{min-height:44px;border-radius:12px}
+.form-tip{font-size:10.5px;color:var(--muted);background:#f6f7f6;padding:9px 10px;border-radius:10px;margin-top:6px;line-height:1.45}
+@media(max-width:360px){.range-grid,.grid2{grid-template-columns:1fr}.statgrid{grid-template-columns:1fr 1fr}.quick-actions{grid-template-columns:1fr}}
+@media print{.report-controls,.actions,.report-hint{display:none!important}}
