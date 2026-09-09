@@ -1,8 +1,8 @@
-/* Serendib Petals cloud shell v12 */
+/* Serendib Petals cloud shell v13 */
 (function(){
   const rootFrame=document.getElementById('cloudAppFrame');
   const desktop=window.matchMedia&&window.matchMedia('(min-width:900px)').matches;
-  const baseTarget=desktop?'v9.html?v=12':'v7.html?v=12';
+  const baseTarget=desktop?'v9.html?v=13':'v7.html?v=13';
   let authReloadDone=false;
 
   function addCss(doc,id,href){if(doc.getElementById(id))return;const l=doc.createElement('link');l.id=id;l.rel='stylesheet';l.href=href;doc.head.appendChild(l)}
@@ -11,9 +11,10 @@
   function addEnhancements(doc){
     addCss(doc,'serendib-enhancements-css','serendib-enhancements.css?v=11');
     addCss(doc,'serendib-expenses-css','expenses-v12.css?v=12');
+    addCss(doc,'serendib-ui-fixes-css','ui-fixes-v13.css?v=13');
     addJs(doc,'serendib-enhancements-js','serendib-enhancements.js?v=11');
-    addJs(doc,'serendib-logo-fix','logo-fix-v12.js?v=12');
     addJs(doc,'serendib-expenses-js','expenses-v12.js?v=12');
+    addJs(doc,'serendib-ui-fixes-js','ui-fixes-v13.js?v=13');
   }
 
   function addCloudAssets(frame){
