@@ -1,5 +1,5 @@
-/* Serendib Orders v7 usability layer */
-:root{--brand:#7b1e2b;--brand-soft:#f7ecef;--green:#246247;--amber:#9a5a00;--danger:#a3263c;--shadow-sm:0 5px 18px rgba(25,35,28,.055)}
+/* Serendib Orders v8 usability layer */
+:root{--brand:#7b1e2b;--brand-2:#9a3043;--brand-soft:#f7ecef;--green:#246247;--amber:#9a5a00;--danger:#a3263c;--shadow-sm:0 5px 18px rgba(25,35,28,.055);--shadow-md:0 14px 40px rgba(29,38,31,.09);--desktop-nav:#171b18;--desktop-surface:#f5f7f5}
 body{background:#eef2ee}.phone{background:#f7f8f6;box-shadow:0 0 0 1px rgba(0,0,0,.03)}
 .header{padding:16px 16px 9px}.header h1{font-size:25px}.subtitle{font-size:11px;line-height:1.35}
 .plus{width:auto;height:38px;border-radius:12px;padding:0 14px;font-size:14px;font-weight:800;white-space:nowrap}
@@ -18,5 +18,109 @@ body{background:#eef2ee}.phone{background:#f7f8f6;box-shadow:0 0 0 1px rgba(0,0,
 .section{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm)}.section-title{font-size:10.5px;margin-bottom:10px;color:#5d665f}.field{margin-bottom:9px}.field:last-child{margin-bottom:0}.field label{font-size:10.5px;font-weight:650;color:#697169}.grid2{gap:8px}input,textarea,select{border-radius:11px;padding:11px 11px;font-size:14px;background:#fbfcfb}input[readonly]{background:#f1f3f1;color:#4d554f;font-weight:700}textarea{min-height:66px}
 .quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.payment-row{padding:9px 0}.payment-row small{font-size:9.5px}.danger{min-height:44px;border-radius:12px}
 .form-tip{font-size:10.5px;color:var(--muted);background:#f6f7f6;padding:9px 10px;border-radius:10px;margin-top:6px;line-height:1.45}
+
+/* PREMIUM LAPTOP / DESKTOP EXPERIENCE */
+@media (min-width:900px){
+  html,body{min-height:100%;background:var(--desktop-surface)}
+  body{overflow-x:hidden}
+  .phone{width:100%;max-width:none;min-height:100vh;margin:0;background:var(--desktop-surface);box-shadow:none}
+
+  /* fixed premium sidebar */
+  .tabs{position:fixed;z-index:50;left:0;top:0;bottom:0;transform:none;width:238px;height:100vh;display:flex;flex-direction:column;justify-content:flex-start;gap:7px;padding:118px 16px 22px;background:linear-gradient(180deg,#161a17 0%,#1b201c 100%);border:0;box-shadow:12px 0 32px rgba(17,23,18,.08)}
+  .tabs::before{content:"SERENDIB PETALS";position:absolute;left:22px;top:34px;color:#fff;font-size:15px;font-weight:850;letter-spacing:.12em}
+  .tabs::after{content:"ORDER MANAGER";position:absolute;left:22px;top:58px;color:rgba(255,255,255,.48);font-size:10px;font-weight:700;letter-spacing:.18em}
+  .tab{width:100%;min-height:48px;text-align:left;padding:0 14px;border-radius:12px;color:rgba(255,255,255,.62);font-size:13px;font-weight:700;transition:.18s ease;background:transparent}
+  .tab:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(2px)}
+  .tab.active{background:#fff;color:var(--brand);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+
+  /* content area */
+  #ordersPage,#todayPage,#analyticsPage,#teamPage{margin-left:238px;min-height:100vh}
+  .top{position:sticky;top:0;z-index:25;background:rgba(248,250,248,.92);backdrop-filter:blur(22px);border-bottom:1px solid rgba(31,40,33,.07);box-shadow:0 4px 20px rgba(28,35,30,.035)}
+  .top>.header,.top>.summary,.top>.search,.top>.chips{max-width:1320px;margin-left:auto;margin-right:auto}
+  .header{padding:30px 34px 14px}
+  .header h1{font-size:32px;letter-spacing:-1px;font-weight:820;color:#202521}
+  .subtitle{font-size:13px;color:#758078;margin-top:7px}
+  .plus{height:44px;padding:0 18px;border-radius:12px;font-size:13px;box-shadow:0 8px 20px rgba(123,30,43,.18);transition:.18s ease}
+  .plus:hover{transform:translateY(-1px);box-shadow:0 11px 26px rgba(123,30,43,.22)}
+
+  .summary{grid-template-columns:repeat(3,minmax(160px,1fr));gap:12px;padding:0 34px 14px}
+  .sum{text-align:left;padding:16px 18px;border-radius:16px;border:1px solid rgba(32,42,34,.07);box-shadow:0 8px 24px rgba(29,38,31,.045);background:rgba(255,255,255,.9)}
+  .sum b{font-size:23px;letter-spacing:-.4px}
+  .sum span{font-size:11px;font-weight:700;color:#7b847e;text-transform:uppercase;letter-spacing:.06em}
+  .search{padding:0 34px 12px}
+  .search input{height:46px;border-radius:12px;padding:0 15px;border-color:#dde3de;background:#fff;box-shadow:0 5px 16px rgba(29,38,31,.025)}
+  .search input:focus{border-color:#cda9b1;box-shadow:0 0 0 4px rgba(123,30,43,.07)}
+  .chips{padding:0 34px 18px;gap:8px}
+  .chip{font-size:11px;padding:8px 13px;border-radius:999px;transition:.16s ease;background:#fff}
+  .chip:hover{border-color:#ccb4ba;transform:translateY(-1px)}
+  .chip.active{background:var(--brand);color:#fff;border-color:var(--brand);box-shadow:0 7px 16px rgba(123,30,43,.16)}
+
+  /* orders board */
+  .list{max-width:1320px;margin:0 auto;padding:24px 34px 70px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-content:start}
+  .order{margin:0;min-height:142px;border-radius:18px;padding:18px 19px;border:1px solid #e0e5e1;box-shadow:0 8px 24px rgba(29,38,31,.045);transition:.18s ease;background:#fff}
+  .order:hover{transform:translateY(-2px);border-color:#d5dbd6;box-shadow:0 15px 34px rgba(29,38,31,.075)}
+  .order.urgent-order{border-left:4px solid #c56a1b}
+  .order h3{font-size:15px;color:#303731}
+  .order .customer{font-size:15px;margin-top:12px;color:#232924}
+  .order .bouquet{font-size:12.5px;margin-top:5px}
+  .meta{font-size:11px;margin-top:18px;padding-top:12px;border-top:1px solid #eef1ee}
+  .badge{font-size:9.5px;padding:6px 9px;border-radius:999px}
+  .empty{grid-column:1/-1;background:#fff;border:1px dashed #d8ded9;border-radius:18px;margin-top:4px}
+
+  /* inner dashboard pages */
+  .analytics{max-width:1320px;margin:0 auto;padding:28px 34px 72px}
+  #todayPage .analytics{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+  #todayPage .analytics .reportbox:first-child{grid-row:span 2}
+  #teamPage .analytics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .reportbox,.detail-card,.bigstat{border:1px solid #e0e5e1;background:#fff;box-shadow:0 8px 24px rgba(29,38,31,.045)}
+  .reportbox{padding:20px;border-radius:18px;margin-top:0;margin-bottom:16px}
+  .reportbox h3{font-size:15px;margin-bottom:12px;color:#2a302b}
+  .detail-card{padding:18px;border-radius:18px}
+  .detail-label{font-size:10px;letter-spacing:.08em;font-weight:800;color:#7a847d}
+  .detail-value{font-size:14px;line-height:1.5;margin-top:5px}
+
+  /* report UX */
+  #analyticsPage .analytics{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;align-items:start}
+  #analyticsPage .report-controls{grid-column:1;grid-row:1 / span 3;position:sticky;top:128px;padding:20px}
+  #analyticsPage .statgrid{grid-column:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
+  #analyticsPage .actions{grid-column:2;display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-top:0}
+  #analyticsPage #printReport{grid-column:2;margin:0}
+  #analyticsPage .analytics>.reportbox:last-child{grid-column:2;margin:0}
+  .bigstat{padding:18px;border-radius:17px}
+  .bigstat b{font-size:24px;letter-spacing:-.5px}
+  .bigstat span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:750}
+  .range-grid{gap:10px}
+  .preset-row{flex-wrap:wrap;overflow:visible}
+  .preset{font-size:10.5px;padding:8px 11px;cursor:pointer;transition:.15s ease}
+  .preset:hover{border-color:#ccb4ba;background:#fcf8f9}
+  .actionbtn{cursor:pointer;transition:.16s ease;box-shadow:none}
+  .actionbtn:hover{transform:translateY(-1px);filter:brightness(.98);box-shadow:0 8px 20px rgba(29,38,31,.06)}
+  .actionbtn.primary-wide{grid-column:auto;background:var(--brand);box-shadow:0 8px 20px rgba(123,30,43,.16)}
+  .source-chips span{font-size:10.5px;padding:7px 10px}
+  .report-preview-row{padding:13px 2px}.report-preview-row b{font-size:12px}.report-preview-row small{font-size:10px}
+
+  /* desktop modal = real dialog, not bottom sheet */
+  .modal{align-items:center;padding:28px;background:rgba(17,22,18,.48);backdrop-filter:blur(5px)}
+  .sheet{width:min(980px,92vw);max-height:90vh;border-radius:22px;padding:0 22px 26px;box-shadow:0 32px 90px rgba(12,18,13,.25);border:1px solid rgba(255,255,255,.55)}
+  .sheet-head{margin:0 -22px 12px;padding:17px 22px 14px;border-radius:22px 22px 0 0}
+  .sheet-head h2{font-size:19px}
+  .ghost{font-size:13px;cursor:pointer}
+  .section{padding:18px;border-radius:17px;margin-top:12px;box-shadow:none}
+  .section-title{font-size:10.5px;letter-spacing:.08em;margin-bottom:14px}
+  .field label{font-size:10.5px;margin-bottom:6px}
+  input,textarea,select{font-size:13px;min-height:43px;border-radius:10px;padding:10px 12px;transition:.15s ease}
+  input:focus,textarea:focus,select:focus{border-color:#c9a6af;box-shadow:0 0 0 3px rgba(123,30,43,.065);outline:none}
+  textarea{min-height:74px}
+  .grid2{gap:12px}
+  .quick-actions{margin:14px 0;gap:10px}
+  .payment-row{padding:11px 3px}
+  .danger{cursor:pointer}
+}
+
+@media (min-width:1280px){
+  .list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #teamPage .analytics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 @media(max-width:360px){.range-grid,.grid2{grid-template-columns:1fr}.statgrid{grid-template-columns:1fr 1fr}.quick-actions{grid-template-columns:1fr}}
 @media print{.report-controls,.actions,.report-hint{display:none!important}}
