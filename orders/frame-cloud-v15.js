@@ -31,11 +31,17 @@
         }
       };
 
-      if(w.supabase&&typeof w.supabase.createClient==='function') finish();
-      else addJs(doc,'sp-supabase-js','https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',finish);
+      if(w.supabase&&typeof w.supabase.createClient==='function'){
+        finish();
+      }else if(window.supabase&&typeof window.supabase.createClient==='function'){
+        w.supabase=window.supabase;
+        finish();
+      }else{
+        addJs(doc,'sp-supabase-js','https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',finish);
+      }
     }catch(e){ console.warn('Serendib frame cloud bridge delayed',e); }
   }
 
-  frame.addEventListener('load',()=>setTimeout(inject,30));
-  setTimeout(inject,250);
+  frame.addEventListener('load',()=>setTimeout(inject,20));
+  setTimeout(inject,160);
 })();
