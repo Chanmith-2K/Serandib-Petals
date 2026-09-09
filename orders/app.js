@@ -1,0 +1,71 @@
+const STATUSES=["New","Confirmed","Flowers Ready","Arranging","Wrapping","Ready","Out for Delivery","Delivered"];
+const PAYMENTS=["Unpaid","Deposit Paid","Paid"];
+let selectedStatus="All",editingId=null,currentId=null;
+
+const seed=[
+{id:crypto.randomUUID(),orderNumber:"SP-001",customerName:"Nethmi",phone:"077 123 4567",bouquetName:"20 Rose Premium Bouquet",flowerDetails:"Red 12 + White 8",cardMessage:"Happy Birthday! 🤍",deliveryAddress:"Bandarawela",deliveryDate:todayAt(16),amount:4500,paymentStatus:"Paid",status:"Confirmed",notes:"Call before delivery"},
+{id:crypto.randomUUID(),orderNumber:"SP-002",customerName:"Dinuka",phone:"071 555 2233",bouquetName:"Mixed Pastel Bouquet",flowerDetails:"Pink + White + Peach",cardMessage:"For you, always.",deliveryAddress:"Welimada",deliveryDate:todayAt(18),amount:5200,paymentStatus:"Deposit Paid",status:"Flowers Ready",notes:""},
+{id:crypto.randomUUID(),orderNumber:"SP-003",customerName:"Shenali",phone:"076 998 2200",bouquetName:"Luxury Red Roses",flowerDetails:"25 Red Roses",cardMessage:"Congratulations",deliveryAddress:"Badulla",deliveryDate:tomorrowAt(11),amount:6500,paymentStatus:"Unpaid",status:"New",notes:""}];
+
+function todayAt(h){const d=new Date();d.setHours(h,0,0,0);return toLocalInput(d)}
+function tomorrowAt(h){const d=new Date();d.setDate(d.getDate()+1);d.setHours(h,0,0,0);return toLocalInput(d)}
+function toLocalInput(d){const off=d.getTimezoneOffset();return new Date(d.getTime()-off*60000).toISOString().slice(0,16)}
+function getOrders(){const raw=localStorage.getItem("serendib_orders_preview");if(!raw){localStorage.setItem("serendib_orders_preview",JSON.stringify(seed));return seed}try{return JSON.parse(raw)}catch{return seed}}
+function setOrders(v){localStorage.setItem("serendib_orders_preview",JSON.stringify(v))}
+function esc(s=""){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function isToday(v){const d=new Date(v),n=new Date();return d.getFullYear()===n.getFullYear()&&d.getMonth()===n.getMonth()&&d.getDate()===n.getDate()}
+function formatDate(v){return new Date(v).toLocaleString([], {year:"numeric",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}
+
+function init(){
+ document.getElementById("chips").innerHTML=["All",...STATUSES].map(s=>`<button class="chip ${s==="All"?"active":""}" onclick="setStatus('${s.replace(/'/g,"\\'")}')">${s}</button>`).join("");
+ document.getElementById("paymentStatus").innerHTML=PAYMENTS.map(x=>`<option>${x}</option>`).join("");
+ document.getElementById("status").innerHTML=STATUSES.map(x=>`<option>${x}</option>`).join("");
+ renderOrders();renderAnalytics();
+ if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{})}
+}
+function setStatus(s){selectedStatus=s;[...document.querySelectorAll(".chip")].forEach(b=>b.classList.toggle("active",b.textContent===s));renderOrders()}
+function renderOrders(){
+ const orders=getOrders(),q=document.getElementById("search").value.trim().toLowerCase();
+ const filtered=orders.filter(o=>selectedStatus==="All"||o.status===selectedStatus).filter(o=>!q||[o.orderNumber,o.customerName,o.phone,o.bouquetName].some(x=>(x||"").toLowerCase().includes(q))).sort((a,b)=>new Date(a.deliveryDate)-new Date(b.deliveryDate));
+ document.getElementById("openCount").textContent=orders.filter(o=>o.status!=="Delivered").length;
+ document.getElementById("todayCount").textContent=orders.filter(o=>o.status!=="Delivered"&&isToday(o.deliveryDate)).length;
+ document.getElementById("deliveredCount").textContent=orders.filter(o=>o.status==="Delivered").length;
+ const list=document.getElementById("orderList");
+ if(!filtered.length){list.innerHTML='<div class="empty">No orders found.<br>Tap + to add one.</div>';return}
+ list.innerHTML=filtered.map(o=>`<div class="order" onclick="openDetail('${o.id}')"><div class="row"><h3>${esc(o.orderNumber)}</h3><span class="badge">${esc(o.status)}</span></div><div class="customer">${esc(o.customerName)}</div><div class="bouquet">${esc(o.bouquetName)}</div><div class="meta"><span>${formatDate(o.deliveryDate)}</span><span>Rs. ${Number(o.amount||0).toLocaleString()}</span></div></div>`).join("")
+}
+function nextOrderNumber(){const nums=getOrders().map(o=>parseInt((o.orderNumber||"").replace(/\D/g,""))||0);return"SP-"+String((Math.max(0,...nums)+1)).padStart(3,"0")}
+function openNew(){editingId=null;document.getElementById("formTitle").textContent="New Order";["customerName","phone","bouquetName","flowerDetails","cardMessage","deliveryAddress","amount","notes"].forEach(id=>document.getElementById(id).value="");document.getElementById("orderNumber").value=nextOrderNumber();document.getElementById("deliveryDate").value=toLocalInput(new Date());document.getElementById("paymentStatus").value="Unpaid";document.getElementById("status").value="New";document.getElementById("orderModal").classList.add("show")}
+function saveOrder(){
+ const name=document.getElementById("customerName").value.trim(),bouquet=document.getElementById("bouquetName").value.trim();if(!name||!bouquet){alert("Please enter customer name and bouquet name.");return}
+ let orders=getOrders();const obj={id:editingId||crypto.randomUUID(),orderNumber:document.getElementById("orderNumber").value.trim(),customerName:name,phone:document.getElementById("phone").value.trim(),bouquetName:bouquet,flowerDetails:document.getElementById("flowerDetails").value.trim(),cardMessage:document.getElementById("cardMessage").value.trim(),deliveryAddress:document.getElementById("deliveryAddress").value.trim(),deliveryDate:document.getElementById("deliveryDate").value,amount:Number(document.getElementById("amount").value||0),paymentStatus:document.getElementById("paymentStatus").value,status:document.getElementById("status").value,notes:document.getElementById("notes").value.trim()};
+ if(editingId)orders=orders.map(o=>o.id===editingId?obj:o);else orders.push(obj);setOrders(orders);closeModal();renderOrders();renderAnalytics()
+}
+function openDetail(id){currentId=id;const o=getOrders().find(x=>x.id===id);if(!o)return;document.getElementById("detailTitle").textContent=o.orderNumber;const items=[["Customer",o.customerName],["Phone",o.phone],["Bouquet",o.bouquetName],["Flowers / Colours",o.flowerDetails],["Card Message",o.cardMessage],["Delivery",formatDate(o.deliveryDate)],["Address",o.deliveryAddress],["Amount","Rs. "+Number(o.amount||0).toLocaleString()],["Payment",o.paymentStatus],["Status",o.status],["Notes",o.notes]].filter(x=>x[1]);document.getElementById("detailBody").innerHTML=items.map(([a,b])=>`<div class="detail-card"><div class="detail-label">${esc(a)}</div><div class="detail-value">${esc(b)}</div></div>`).join("");document.getElementById("detailModal").classList.add("show")}
+function editCurrent(){const o=getOrders().find(x=>x.id===currentId);if(!o)return;closeDetail();editingId=o.id;document.getElementById("formTitle").textContent="Edit Order";Object.entries({orderNumber:o.orderNumber,customerName:o.customerName,phone:o.phone,bouquetName:o.bouquetName,flowerDetails:o.flowerDetails,cardMessage:o.cardMessage,deliveryAddress:o.deliveryAddress,deliveryDate:o.deliveryDate,amount:o.amount,paymentStatus:o.paymentStatus,status:o.status,notes:o.notes}).forEach(([k,v])=>document.getElementById(k).value=v??"");document.getElementById("orderModal").classList.add("show")}
+function deleteCurrent(){if(!confirm("Delete this order?"))return;setOrders(getOrders().filter(o=>o.id!==currentId));closeDetail();renderOrders();renderAnalytics()}
+function closeModal(){document.getElementById("orderModal").classList.remove("show")}function closeDetail(){document.getElementById("detailModal").classList.remove("show")}
+function backdropClose(e){if(e.target.id==="orderModal")closeModal()}function backdropCloseDetail(e){if(e.target.id==="detailModal")closeDetail()}
+function showPage(page){["orders","analytics","team"].forEach(x=>{document.getElementById(x+"Page").classList.toggle("hidden",x!==page);document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle("active",x===page)});if(page==="analytics")renderAnalytics()}
+function renderAnalytics(){
+ const orders=getOrders(),revenue=orders.reduce((s,o)=>s+Number(o.amount||0),0),paid=orders.filter(o=>o.paymentStatus==="Paid").length,open=orders.filter(o=>o.status!=="Delivered").length,del=orders.filter(o=>o.status==="Delivered").length;
+ document.getElementById("revStat").textContent="Rs. "+revenue.toLocaleString();document.getElementById("paidStat").textContent=paid;document.getElementById("pendingStat").textContent=open;document.getElementById("deliveryStat").textContent=del;
+ document.getElementById("reportDate").textContent="Generated: "+new Date().toLocaleString();
+ document.getElementById("reportSummary").textContent=`Orders: ${orders.length} | Open: ${open} | Delivered: ${del} | Paid: ${paid} | Total value: Rs. ${revenue.toLocaleString()}`;
+ document.getElementById("reportTable").innerHTML=orders.length?`<div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:11px"><thead><tr><th style="text-align:left;padding:7px;border-bottom:1px solid #ddd">Order</th><th style="text-align:left;padding:7px;border-bottom:1px solid #ddd">Customer</th><th style="text-align:left;padding:7px;border-bottom:1px solid #ddd">Delivery</th><th style="text-align:right;padding:7px;border-bottom:1px solid #ddd">Amount</th><th style="text-align:left;padding:7px;border-bottom:1px solid #ddd">Status</th></tr></thead><tbody>${orders.map(o=>`<tr><td style="padding:7px;border-bottom:1px solid #eee">${esc(o.orderNumber)}</td><td style="padding:7px;border-bottom:1px solid #eee">${esc(o.customerName)}</td><td style="padding:7px;border-bottom:1px solid #eee">${esc(formatDate(o.deliveryDate))}</td><td style="padding:7px;border-bottom:1px solid #eee;text-align:right">Rs. ${Number(o.amount||0).toLocaleString()}</td><td style="padding:7px;border-bottom:1px solid #eee">${esc(o.status)}</td></tr>`).join("")}</tbody></table></div>`:"<p>No orders yet.</p>"
+}
+function csvEscape(v){v=String(v??"");return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function exportCSV(){
+ const orders=getOrders();const headers=["Order ID","Customer","Phone","Bouquet","Flower Details","Card Message","Delivery Date","Delivery Address","Amount LKR","Payment Status","Order Status","Notes"];
+ const rows=orders.map(o=>[o.orderNumber,o.customerName,o.phone,o.bouquetName,o.flowerDetails,o.cardMessage,formatDate(o.deliveryDate),o.deliveryAddress,o.amount,o.paymentStatus,o.status,o.notes]);
+ const csv=[headers,...rows].map(r=>r.map(csvEscape).join(",")).join("\n");
+ downloadBlob(csv,"serendib-orders-"+new Date().toISOString().slice(0,10)+".csv","text/csv;charset=utf-8")
+}
+function backupJSON(){downloadBlob(JSON.stringify(getOrders(),null,2),"serendib-orders-backup-"+new Date().toISOString().slice(0,10)+".json","application/json")}
+function downloadBlob(content,name,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function shareSummary(){
+ const orders=getOrders(),rev=orders.reduce((s,o)=>s+Number(o.amount||0),0);
+ const text=`Serendib Petals Orders\nOrders: ${orders.length}\nOpen: ${orders.filter(o=>o.status!=="Delivered").length}\nDelivered: ${orders.filter(o=>o.status==="Delivered").length}\nTotal value: Rs. ${rev.toLocaleString()}`;
+ if(navigator.share){try{await navigator.share({title:"Serendib Petals Order Report",text})}catch(e){}} else {navigator.clipboard?.writeText(text);alert("Summary copied.")}
+}
+init();
